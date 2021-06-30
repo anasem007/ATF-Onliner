@@ -1,7 +1,9 @@
 using System;
 using System.IO;
 using System.Reflection;
+using ATF_Onliner.Context;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ATF_Onliner.Services
 {
@@ -13,6 +15,7 @@ namespace ATF_Onliner.Services
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
         public static int Timeout => int.Parse(Configuration[nameof(Timeout)]);
         public static string BrowserType => Configuration[nameof(BrowserType)];
+        public static string DbConnectionStrings => Configuration.GetConnectionString("DefaultConnection");
 
         
         static Configurator()
@@ -36,5 +39,10 @@ namespace ATF_Onliner.Services
 
             return builder.Build();
         }
+
+        // public void ConfigureServices(IServiceCollection services)
+        // {
+        //     services.AddDbContext<UserContext>(options => options.UseMySQL)
+        // }
     }
 }
