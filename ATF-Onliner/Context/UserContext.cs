@@ -12,7 +12,7 @@ namespace ATF_Onliner.Context
     {
         public DbSet<User> Users { get; set; }
 
-        protected UserContext()
+        public UserContext()
         {
             Database.EnsureCreated();
         }
