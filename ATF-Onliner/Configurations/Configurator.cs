@@ -13,10 +13,14 @@ namespace ATF_Onliner.Services
 
         public static IConfiguration Configuration => s_configuration.Value;
         public static string BaseUrl => Configuration[nameof(BaseUrl)];
-        public static int Timeout => int.Parse(Configuration[nameof(Timeout)]);
+
         public static string BrowserType => Configuration[nameof(BrowserType)];
         public static string DbConnectionStrings => Configuration.GetConnectionString("DefaultConnection");
 
+        public static int GetValue(string name)
+        {
+            return int.Parse(Configuration[nameof(name)]);
+        }
         
         static Configurator()
         {
